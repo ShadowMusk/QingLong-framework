@@ -47,22 +47,17 @@ cd QingLong-framework
 python3 dependencies.py
 ```
 
-![1](C:\Users\86183\Desktop\QingLong-framework\assets\1.png)
-
 然后，运行如下命令来启动框架：
 
 ```shell
 python3 index.py
 ```
 
-![2](C:\Users\86183\Desktop\QingLong-framework\assets\2.png)
-
 ### （2）使用框架
 
 敲击tab键时，命令拦会显示可选命令，选择“let's start”即可进入框架：
-![3](C:\Users\86183\Desktop\QingLong-framework\assets\3.png)
 
-更加详细的使用步骤，请参考链接：
+更加详细的使用步骤，请参考链接：[ShadowMusk/QingLong-Using-Tutorials: Ways to use QingLong framework (github.com)](https://github.com/ShadowMusk/QingLong-Using-Tutorials)
 
 # 5、免责声明
 
