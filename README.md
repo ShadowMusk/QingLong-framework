@@ -41,7 +41,7 @@ Qinglong currently has six major functional modules, namely **information collec
 
 **Intranet penetration module**: backdoor generation, backdoor monitoring, multi backdoor connection, domain information collection, privilege promotion, privilege maintenance, domain horizontal movement attack, domain controller security, Mimikatz, Tunnel broker.
 
-# 4、tutorial
+# 4、Tutorial
 
 ### （1）Launch framework
 
