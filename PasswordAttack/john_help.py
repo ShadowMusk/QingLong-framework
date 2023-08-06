@@ -1,0 +1,100 @@
+def help():
+    print("""
+    --help                     打印使用概要
+    --single[=SECTION[,..]]    “单破解”模式,使用默认或命名规则
+    --single=:rule[,..]        同上,使用“即时”规则
+    --single-seed=WORD[,WORD] 为单模式中的所有盐添加静态种子词
+    --single-wordlist=FILE     包含静态种子词/词素的简短单词表 
+    --single-user-seed=FILE    包含每个用户名种子的单词表(user:password[s]格式)
+    --single-pair-max=N        重写生成的单词对的最大数量(6)
+    --no-single-pair           禁用单词对生成
+    --[no-]single-retest-guess 重写单RetestGuess的配置
+    --wordlist[=FILE] --stdin  从FILE或标准输入读取单词的单词表模式
+                      --pipe   如--stdin,但批量读取,并允许规则
+    --rules[=SECTION[,..]]     为单词表或PRINCE模式启用单词变形规则,使用默认或命名规则
+    --rules=:rule[;..]]        同上,使用“即时”规则
+    --rules-stack=SECTION[,..] 在常规规则之后应用或应用于否则不支持规则的模式的堆叠规则
+    --rules-stack=:rule[;..]   同上,使用“即时”规则 
+    --rules-skip-nop           跳过任何NOP “:” 规则(您已经在没有规则的情况下运行)
+    --loopback[=FILE]          像--wordlist,但从.pot文件中提取单词
+    --mem-file-size=SIZE       词表预加载的大小阈值(默认 2048 MB)
+    --dupe-suppression         在词表中禁止全部重复(并强制预加载)
+    --incremental[=MODE]       使用部分模式的“增量”模式
+    --incremental-charcount=N  重写增量模式的CharCount
+    --external=MODE            外部模式或词过滤器
+    --mask[=MASK]              使用MASK的掩码模式(或john.conf中的默认值)
+    --markov[=OPTIONS]         “马尔可夫”模式(参见文档/马尔可夫)
+    --mkv-stats=FILE           “马尔可夫”统计文件
+    --prince[=FILE]            从FILE读取单词的PRINCE模式
+    --prince-loopback[=FILE]   从.pot文件获取单词  
+    --prince-elem-cnt-min=N    每个链的最小元素数(1)
+    --prince-elem-cnt-max=[-]N 每个链的最大元素数(负N相对于词长度)(8)
+    --prince-skip=N            初始跳过
+    --prince-limit=N           限制生成的候选数
+    --prince-wl-dist-len       从单词表计算长度分布
+    --prince-wl-max=N          仅从输入单词表加载N个单词
+    --prince-case-permute      置换首字母的大小写
+    --prince-mmap              内存映射输入文件(不可与用例置换一起使用)
+    --prince-keyspace          只显示将要生成的总密钥空间(忽略跳过和限制)  
+    --subsets[=CHARSET]        “子集”模式(参见文档/子集)
+    --subsets-required=N       “子集”字符集的前N个字符是“必需集”
+    --subsets-min-diff=N       子集中的最小唯一字符数
+    --subsets-max-diff=[-]N    子集中的最大唯一字符数(负N相对于词长度)
+    --subsets-prefer-short     优先更短的候选项而不是更小的子集
+    --subsets-prefer-small     优先更小的子集而不是更短的候选项
+    --make-charset=FILE        制作字符集,FILE将被覆盖
+    --stdout[=LENGTH]          只输出候选密码[在LENGTH处截断]  
+    --session=NAME             给新会话一个名字NAME
+    --status[=NAME]            打印会话的状态[称为NAME]
+    --restore[=NAME]           恢复中断的会话[称为NAME]
+    --[no-]crack-status        无论何时破解密码都发出状态行
+    --progress-every=N         每N秒发出一个状态行
+    --show[=left]              显示已破解的密码[如果=left,则显示未破解的]
+    --show=formats             显示文件中的哈希信息(JSON格式) 
+    --show=invalid             显示所选格式无效的行
+    --test[=TIME]              每个测试和基准测试运行TIME秒
+                               (如果TIME明确为0,则不带基准测试)
+    --stress-test[=TIME]       永远循环自我测试  
+    --test-full=LEVEL          运行更彻底的自我测试
+    --no-mask                  与--test一起用于无掩码的备选基准测试
+    --skip-self-tests          跳过自我测试
+    --users=[-]LOGIN|UID[,..]  [不]只加载此(些)用户
+    --groups=[-]GID[,..]       仅加载这些用户组的用户
+    --shells=[-]SHELL[,..]     仅加载具有此(些)shell的用户
+    --salts=[-]COUNT[:MAX]     [不]加载具有COUNT个[到MAX个]哈希的盐  
+    --salts=#M[-N]             加载M个[到N个]最多的盐
+    --costs=[-]C[:M][,...]     加载具有[不具有]代价值Cn[到Mn]的盐。
+                               对于可调节成本参数,请参阅文档/选项
+    --fork=N                   分叉N个进程
+    --node=MIN[-MAX]/TOTAL     在TOTAL计数中的该节点编号范围
+    --save-memory=LEVEL        启用内存节省,级别1..3
+    --log-stderr               记录到屏幕而不是文件
+    --verbosity=N              更改详细级别(1-5或6用于调试,默认3)
+    --no-log                   禁用john.log文件的创建和写入  
+    --bare-always-valid=Y      将简单哈希视为有效(Y/N)
+    --catch-up=NAME            赶上现有的(暂停)会话NAME
+    --config=FILE              使用FILE而不是john.conf或john.ini
+    --encoding=NAME            输入编码(例如UTF-8、ISO-8859-1)。另请参阅文档/编码。
+    --input-encoding=NAME      输入编码(--encoding的别名)
+    --internal-codepage=NAME   规则/掩码中使用的代码页(参见文档/编码)
+    --target-encoding=NAME     输出编码(格式使用)
+    --force-tty                设置终端以读取按键,即使我们不是前台进程
+    --field-separator-char=C   在输入和pot文件中使用'C'而不是':'
+    --[no-]keep-guessing       尝试查找明文冲突
+    --list=WHAT                列出功能,参见--list=help或文档/选项
+    --length=N                 --min-len=N --max-len=N的快捷方式  
+    --min-length=N             请求最小候选字节长度
+    --max-length=N             请求最大候选字节长度
+    --max-candidates=[-]N      在尝试这么多候选项后优雅退出。
+                               (如果为负,则在每次破解上重置计数)
+    --max-run-time=[-]N        在这么多秒后优雅退出(如果为负,则在每次破解上重置计时器)
+    --mkpc=N                   请求较低的每个密文的最大密钥
+    --no-loader-dupecheck      加载哈希时禁用重复检查
+    --pot=NAME                 要使用的Pot文件  
+    --regen-lost-salts=N       暴力未知盐(参见文档/选项)
+    --reject-printable         拒绝可打印的二进制文件
+    --tune=HOW                 调优选项(auto/report/N)
+    --subformat=FORMAT         为--format=crypt选择基准格式
+    --format=[NAME|CLASS][,..] 强制哈希类型NAME。支持的格式可用--list=formats和--list=subformats查看。
+                               另请参阅文档/选项了解更高级的格式选择,包括使用类和通配符。
+    """)
