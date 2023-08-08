@@ -2,7 +2,7 @@ import os
 import struct
 
 """
-CVE上传函数
+上传函数
 """
 
 
