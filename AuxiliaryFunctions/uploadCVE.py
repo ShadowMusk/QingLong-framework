@@ -2,7 +2,7 @@ import os
 import struct
 
 """
-上传函数
+上传辅助模块
 """
 
 
