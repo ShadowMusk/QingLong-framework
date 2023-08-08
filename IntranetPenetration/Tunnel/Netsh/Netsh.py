@@ -1,25 +1,29 @@
-from prettytable import PrettyTable
 import struct
+from prompt_toolkit import prompt
+from prompt_toolkit.completion import WordCompleter
+from prompt_toolkit.formatted_text import ANSI
+import os
+import sys
+
+sys.path.append(os.path.dirname(os.path.realpath(__file__)))
+from AuxiliaryFunctions import MyTable
 
 
 # 利用Netsh进行端口转发
 def Netsh(conn):
-    table = PrettyTable()
-    table.title = '\033[1;34;34m' + "Netsh端口转发" + '\033[0m'
-    table.field_names = ['\033[1;34;34m' + "Num" + '\033[0m', '\033[1;34;34m' + "Model" + '\033[0m', '\033[1;34;34m' + "Usage" + '\033[0m']
-    table.add_rows([
-        ["1", "设置端口转发", "1 listen_port connect_port target_ip"],
-        ["2", "查看所有的端口转发规则", "2"],
-        ["3", "清除所有的端口转发规则", "3"]
-    ])
-    print(table)
+    commands = ["back", "show params", "show functions"]
+    completer = WordCompleter(commands)
+    formatted_text1 = ANSI('\033[1;32;32m(QingLong Framework/Intranet Penetration)-\033[0m\033[1;31;31m[BackDoor/Tunnel/2] \033[0m')
     while True:
         try:
-            choice = input('\033[1;32;32m' + "(QingLong Framework/Intranet Penetration)-" + '\033[0m' + '\033[1;31;31m' + "[BackDoor/Tunnel/2] " + '\033[0m')
-            if choice.lower() == 'help':
-                print(table)
+            choice = prompt(formatted_text1, completer=completer)
+            if choice == 'show params':
+                show_params()
                 continue
-            elif choice == 'exit':
+            elif choice == "show functions":
+                show_functions()
+                continue
+            elif choice == 'back':
                 break
             elif choice == "":
                 continue
@@ -43,6 +47,22 @@ def Netsh(conn):
                 continue
         except:
             continue
+
+
+def show_params():
+    print("\n" + '\033[1;34;34m' + "Parameter Description" + '\033[0m' + "\n" + '=' * len("Parameter Description") + "\n")
+    headers = ['\033[1;34;34m' "Params" + '\033[0m', '\033[1;34;34m' "Description" + '\033[0m']
+    mydata = [["listen_port", "监听端口"], ["connect_port", "连接端口"], ["target_ip", "目标IP"]]
+    MyTable.createTable(headers, mydata)
+
+
+def show_functions():
+    print("\n" + '\033[1;34;34m' + "Tunnel" + '\033[0m' + "\n" + '=' * len("Tunnel") + "\n")
+    headers = ['\033[1;34;34m' + "id" + '\033[0m', '\033[1;34;34m' + "model" + '\033[0m', '\033[1;34;34m' + "usage" + '\033[0m', '\033[1;34;34m' + "description" + '\033[0m']
+    mydata = [["1", "Set Port Forwarding", "1 listen_port connect_port target_ip", "设置端口转发"],
+              ["2", "View all port forwarding rules", "2", "查看所有的端口转发规则"],
+              ["3", "Clear all port forwarding rules", "3", "清除所有的端口转发规则"]]
+    MyTable.createTable(headers, mydata)
 
 
 def receive(conn, command):
