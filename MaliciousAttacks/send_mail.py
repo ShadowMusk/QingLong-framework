@@ -3,15 +3,15 @@ from email.mime.text import MIMEText
 from email.utils import formataddr
 
 
-def send_mail(server_mail_addr, port, from_addr, password, to_addr, template_path, subject):
+def send_mail(server_mail_addr, port, from_addr, password, to_addr, template_path, subject, from_who, to_who):
     try:
         smtp = smtplib.SMTP_SSL(server_mail_addr, port=int(port))
         smtp.login(user=from_addr, password=password)
         with open(template_path, "r", encoding="utf-8") as f:
             file_content = f.read()
         message = MIMEText(file_content, "html", "utf-8")
-        message["From"] = formataddr(["fairly", from_addr])
-        message["To"] = formataddr(["jack", to_addr])
+        message["From"] = formataddr([from_who, from_addr])
+        message["To"] = formataddr([to_who, to_addr])
         message["Subject"] = subject
         smtp.sendmail(from_addr=from_addr, to_addrs=to_addr, msg=message.as_string())
         smtp.quit()
