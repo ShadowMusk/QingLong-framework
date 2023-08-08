@@ -6,7 +6,7 @@ import logo
 import QingLong
 
 if __name__ == '__main__':
-    thread_session = []  # 存储会话列表
+    thread_session = []  # 存储会话列表.
     commands = ["let's start", "quit"]
     completer = WordCompleter(commands)
     formatted_text = ANSI('\033[1;32;32m(QingLong Framework) > \033[0m')
