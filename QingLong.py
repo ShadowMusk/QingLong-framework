@@ -19,7 +19,7 @@ class QingLong:
     def __init__(self, thread_session):
         logo2.logo()
         self.show_functions()
-        self.thread_session = thread_session  # 存放已连接的会话
+        self.thread_session = thread_session  # 存放已连接的会话.
         commands = ["quit", "show functions"]
         completer = WordCompleter(commands)
         formatted_text = ANSI('\033[1;32;32m(QingLong Framework) > \033[0m')
