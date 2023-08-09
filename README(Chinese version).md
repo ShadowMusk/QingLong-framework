@@ -71,7 +71,11 @@ python3 index.py
 
 更加详细的使用步骤，请参考链接：[ShadowMusk/QingLong-Using-Tutorials: Ways to use QingLong framework (github.com)](https://github.com/ShadowMusk/QingLong-Using-Tutorials)
 
-# 5、免责声明
+# 5、查看更新记录
+
+请查看“Update Records.md”文件来获取更新信息。
+
+# 6、免责声明
 
 1. 使用风险：本渗透测试工具仅用于授权的渗透测试和安全评估活动。未经授权访问或使用他人系统和数据可能违反法律，对他人的财产和隐私构成威胁。请确保您已获得合法授权，并遵守适用法律和政策。
 
