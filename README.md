@@ -1,10 +1,10 @@
-# 1、QingLong framework ![logo](readme.assets/logo.jpg)
+# 1.QingLong framework ![logo](readme.assets/logo.jpg)
 
 Qinglong is a lightweight Penetration test framework focusing on intranet penetration. Its functions are very powerful and the operation is very simple.
 
 This project will be kept updated for a long time.
 
-# 2、Operating environment
+# 2.Operating environment
 
 ## 2.1 System environment
 
@@ -25,7 +25,7 @@ This project will be kept updated for a long time.
 
 The Python version should not be lower than **3.6** (this project is developed based on Python 3.6, and perhaps other Python versions lower than 3.6 can also run this project)
 
-# 3、Functional module          
+# 3.Functional module          
 
 Qinglong currently has six major functional modules, namely **information collection module**, **vulnerability scanning module**, **password cracking module**, **malicious attack module**, **denial of service attack module**, and **internal network penetration module**.
 
@@ -41,7 +41,7 @@ Qinglong currently has six major functional modules, namely **information collec
 
 **Intranet penetration module**: backdoor generation, backdoor monitoring, multi backdoor connection, domain information collection, privilege promotion, privilege maintenance, domain horizontal movement attack, domain controller security, Mimikatz, Tunnel broker.
 
-# 4、Tutorial
+# 4.Tutorial
 
 ### （1）Launch framework
 
@@ -69,6 +69,12 @@ When tapping the tab key, the command bar will display optional commands. Select
 
 For more detailed usage steps, please refer to the link:[ShadowMusk/QingLong-Using-Tutorials: Ways to use QingLong framework (github.com)](https://github.com/ShadowMusk/QingLong-Using-Tutorials)
 
-# 5、Disclaimers
+# 5.View update records
+
+Please check the 'Update Records. md' file for updated information.
+
+（请查看“Update Records.md”文件来获取更新信息。）
+
+# 6.Disclaimers
 
 This Penetration test tool is only used for authorized Penetration test and safety assessment activities!
