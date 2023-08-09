@@ -8,3 +8,10 @@ When we engage in email phishing and email bombing attacks, the framework allows
 
 （当我们进行邮箱钓鱼和邮箱轰炸攻击时，允许我们自定义发件人和接收人。）
 
+## 2.QingLong Framework v1.2 updated on August 9, 2023
+
+The updated content of this version is as follows:
+
+Allow attackers to steal passwords from Google Chrome.
+
+（允许攻击者们盗取谷歌浏览器的密码。）
