@@ -37,7 +37,7 @@ Qinglong currently has six major functional modules, namely **information collec
 
 **Malicious attack module**: email phishing and email bombing.
 
-**Denial of service attack modules**: hping3, slowloris, goldeneye, hammer, DDos Attack.
+**Denial of service attack module**: hping3, slowloris, goldeneye, hammer, DDos Attack.
 
 **Intranet penetration module**: backdoor generation, backdoor monitoring, multi backdoor connection, domain information collection, privilege promotion, privilege maintenance, domain horizontal movement attack, domain controller security, Mimikatz, Tunnel broker.
 
