@@ -118,7 +118,9 @@ class Attacker(threading.Thread):
                     os.chdir("../../")
                     continue
                 elif command == '7':
+                    os.chdir("IntranetPenetration/SmallTools")
                     small_tools = SmallTools.SmallTools(self.conn)
+                    os.chdir("../../")
                     continue
                 elif command == '8':
                     tunnel = Tunnel_main.Tunnel(self.conn)
