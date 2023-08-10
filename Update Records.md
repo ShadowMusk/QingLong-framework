@@ -15,3 +15,11 @@ The updated content of this version is as follows:
 Allow attackers to steal passwords from Google Chrome.
 
 （允许攻击者们盗取谷歌浏览器的密码。）
+
+## 3.QingLong Framework v1.3 updated on August 10, 2023
+
+The updated content of this version is as follows:
+
+Allow attackers to obtain the victims' WiFi passwords.
+
+（允许攻击者获取受害者的wifi密码。）
