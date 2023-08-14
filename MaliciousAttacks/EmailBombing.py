@@ -3,6 +3,7 @@ import sys
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.formatted_text import ANSI
+from prompt_toolkit.history import InMemoryHistory
 import smtplib
 from email.mime.text import MIMEText
 from email.utils import formataddr
@@ -19,9 +20,10 @@ class EmailBombing:
         commands = ["back", "show functions", "show params"]
         completer = WordCompleter(commands)
         formatted_text1 = ANSI('\033[1;32;32m(QingLong Framework/Malicious Attacks/2) > \033[0m')
+        history = InMemoryHistory()
         while True:
             try:
-                choice = prompt(formatted_text1, completer=completer)
+                choice = prompt(formatted_text1, completer=completer,history=history)
                 if choice == 'back':
                     break
                 elif choice == 'show functions':

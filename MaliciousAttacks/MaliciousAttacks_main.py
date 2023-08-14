@@ -3,6 +3,7 @@ import sys
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.formatted_text import ANSI
+from prompt_toolkit.history import InMemoryHistory
 
 sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 from AuxiliaryFunctions import MyTable
@@ -15,9 +16,10 @@ class MaliciousAttacks:
         commands = ["back", "show functions"]
         completer = WordCompleter(commands)
         formatted_text1 = ANSI('\033[1;32;32m(QingLong Framework/Malicious Attacks) > \033[0m')
+        history = InMemoryHistory()
         while True:
             try:
-                choice = prompt(formatted_text1, completer=completer)
+                choice = prompt(formatted_text1, completer=completer,history=history)
                 if choice == 'back':
                     break
                 elif choice == "":
