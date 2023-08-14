@@ -3,6 +3,7 @@ import os
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.formatted_text import ANSI
+from prompt_toolkit.history import InMemoryHistory
 from IntranetPenetration.SmallTools import keyboard
 from IntranetPenetration.SmallTools import GetChromePassword
 from IntranetPenetration.SmallTools import getWIFIPasswords
@@ -15,9 +16,10 @@ class SmallTools:
         commands = ["back", "show params", "show functions"]
         completer = WordCompleter(commands)
         formatted_text1 = ANSI('\033[1;32;32m(QingLong Framework/Intranet Penetration)-\033[0m\033[1;31;31m[BackDoor/Small Tools] \033[0m')
+        history = InMemoryHistory()
         while True:
             try:
-                choice = prompt(formatted_text1, completer=completer)
+                choice = prompt(formatted_text1, completer=completer,history=history)
                 if choice.lower() == 'show functions':
                     self.show_functions()
                     continue
