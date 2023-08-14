@@ -5,6 +5,7 @@ import sys
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.formatted_text import ANSI
+from prompt_toolkit.history import InMemoryHistory
 from prettytable import PrettyTable
 
 sys.path.append(os.path.dirname(os.path.realpath(__file__)))
@@ -22,6 +23,7 @@ class DomainInformation:
         commands = ["back", "show functions", "show params"]
         completer = WordCompleter(commands)
         formatted_text1 = ANSI('\033[1;32;32m(QingLong Framework/Information Gathering/1) > \033[0m')
+        history = InMemoryHistory()
         # 通用头部
         self.headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0)Gecko/20100101 Firefox/112.0",
@@ -36,7 +38,7 @@ class DomainInformation:
             "Sec-Fetch-User": "?1"}
         while True:
             try:
-                choice = prompt(formatted_text1, completer=completer)
+                choice = prompt(formatted_text1, completer=completer, history=history)
                 if choice == "":
                     continue
                 elif choice.split()[0] == '1':
