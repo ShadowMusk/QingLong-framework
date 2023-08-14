@@ -1,6 +1,7 @@
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.formatted_text import ANSI
+from prompt_toolkit.history import InMemoryHistory
 from AuxiliaryFunctions import MyTable
 from AuxiliaryFunctions import uploadCVE
 
@@ -9,8 +10,9 @@ def Locating_Domain_Controllers(conn):
     commands = ["back", "show functions", "upload", "psloggedon.exe", "psloggedon64.exe", "PVEFindADUser.exe", "netview.exe", "SharpView.exe"]
     completer = WordCompleter(commands)
     formatted_text1 = ANSI('\033[1;32;32m(QingLong Framework/Intranet Penetration)-\033[0m\033[1;31;31m[BackDoor/Information ~ Locating Domain Controllers] \033[0m')
+    history = InMemoryHistory()
     while True:
-        choice = prompt(formatted_text1, completer=completer)
+        choice = prompt(formatted_text1, completer=completer, history=history)
         if choice == 'show functions':
             show_functions()
             continue
