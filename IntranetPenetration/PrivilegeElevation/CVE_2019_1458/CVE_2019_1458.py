@@ -3,6 +3,7 @@ from AuxiliaryFunctions import uploadCVE
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.formatted_text import ANSI
+from prompt_toolkit.history import InMemoryHistory
 
 
 def CVE_2019_1458(conn):
@@ -10,8 +11,9 @@ def CVE_2019_1458(conn):
     completer = WordCompleter(commands)
     formatted_text1 = ANSI('\033[1;1;1mCVE-2019-1458 > \033[0m')
     print('\033[1;32;32m' + "[*] Firstly, please upload CVE_2019_1458.exe" + '\033[0m')
+    history = InMemoryHistory()
     while True:
-        command1 = prompt(formatted_text1, completer=completer)
+        command1 = prompt(formatted_text1, completer=completer, history=history)
         if command1 == "":
             continue
         elif command1.split()[0] == 'upload':
@@ -44,9 +46,10 @@ def CVE_2019_1458(conn):
                 commands = ["exit"]
                 completer = WordCompleter(commands)
                 formatted_text1 = ANSI('\033[1;32;32msystem > \033[0m')
+                history = InMemoryHistory()
                 while True:
                     try:
-                        system_command = prompt(formatted_text1, completer=completer)
+                        system_command = prompt(formatted_text1, completer=completer, history=history)
                         if system_command == 'exit':
                             break
                         elif system_command == "":

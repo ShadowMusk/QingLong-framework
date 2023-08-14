@@ -3,14 +3,16 @@ from AuxiliaryFunctions import uploadCVE
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.formatted_text import ANSI
+from prompt_toolkit.history import InMemoryHistory
 
 
 def MS14058(conn):
     commands = ["exit", "upload MS14_058.exe", "exploit"]
     completer = WordCompleter(commands)
     formatted_text1 = ANSI('\033[1;1;1mMS14-058 > \033[0m')
+    history = InMemoryHistory()
     while True:
-        command1 = prompt(formatted_text1, completer=completer)
+        command1 = prompt(formatted_text1, completer=completer, history=history)
         if command1 == "":
             continue
         elif command1.split()[0] == 'upload':
@@ -29,9 +31,10 @@ def MS14058(conn):
                 commands = ["exit"]
                 completer = WordCompleter(commands)
                 formatted_text1 = ANSI('\033[1;32;32msystem > \033[0m')
+                history1 = InMemoryHistory()
                 while True:
                     try:
-                        system_command = prompt(formatted_text1, completer=completer)
+                        system_command = prompt(formatted_text1, completer=completer, history=history1)
                         if system_command == 'exit':
                             break
                         elif system_command == "":

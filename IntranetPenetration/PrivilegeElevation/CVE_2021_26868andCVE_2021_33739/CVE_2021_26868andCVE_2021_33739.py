@@ -3,15 +3,17 @@ from AuxiliaryFunctions import uploadCVE
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.formatted_text import ANSI
+from prompt_toolkit.history import InMemoryHistory
 
 
 def CVE_2021_26868andCVE_2021_33739(conn):
     commands = ["exit", "upload CVE_2021_26868andCVE_2021_33739_x64.exe", "upload CVE_2021_26868andCVE_2021_33739_x86.exe", "exploit"]
     completer = WordCompleter(commands)
     formatted_text1 = ANSI('\033[1;1;1mCVE-2021-26868/33739 > \033[0m')
+    history = InMemoryHistory()
     while True:
         try:
-            command1 = prompt(formatted_text1, completer=completer)
+            command1 = prompt(formatted_text1, completer=completer, history=history)
             if command1 == "":
                 continue
             elif command1.split()[0].lower() == 'upload':
