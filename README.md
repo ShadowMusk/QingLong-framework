@@ -48,7 +48,7 @@ Qinglong currently has six major functional modules, namely **information collec
 Firstly, go to the directory of the framework:
 
 ```shell
-cd QingLong-framework
+cd QingLong-framework-main
 ```
 
 Next, run the following command to install the required dependencies for the framework:                         
