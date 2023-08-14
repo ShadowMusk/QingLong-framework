@@ -3,6 +3,7 @@ import sys
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.formatted_text import ANSI
+from prompt_toolkit.history import InMemoryHistory
 
 sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 from IntranetPenetration.backdoor import attacker
@@ -15,8 +16,9 @@ class IntranetPenetration:
         commands = ["back", "show sessions", "enter session ", "show functions", "delete session ", "show params"]
         completer = WordCompleter(commands)
         formatted_text1 = ANSI('\033[1;32;32m(QingLong Framework/Intranet Penetration) > \033[0m')
+        history = InMemoryHistory()
         while True:
-            choice = prompt(formatted_text1, completer=completer)
+            choice = prompt(formatted_text1, completer=completer, history=history)
             if choice == 'back':
                 break
             elif choice == "":
