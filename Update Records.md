@@ -23,3 +23,11 @@ The updated content of this version is as follows:
 Allow attackers to obtain the victims' WiFi passwords.
 
 （允许攻击者获取受害者的wifi密码。）
+
+## 4.QingLong Framework v1.4 updated on August 14, 2023
+
+The updated content of this version is as follows:
+
+Command line support for querying input history function.
+
+（命令行支持查询输入历史功能。）
