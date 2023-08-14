@@ -3,6 +3,7 @@ import sys
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.formatted_text import ANSI
+from prompt_toolkit.history import InMemoryHistory
 
 sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 from GetInformation import GetInformation_main
@@ -23,9 +24,10 @@ class QingLong:
         commands = ["quit", "show functions"]
         completer = WordCompleter(commands)
         formatted_text = ANSI('\033[1;32;32m(QingLong Framework) > \033[0m')
+        history = InMemoryHistory()
         print('\033[1;34;34m' + "[*] Try \"show functions\" to learn more." + '\033[0m')
         while True:
-            choice = prompt(formatted_text, completer=completer)
+            choice = prompt(formatted_text, completer=completer, history=history)
             if choice == 'show functions':
                 self.show_functions()
                 print('\033[1;34;34m' + "[*] Select the serial number to enter the function module." + '\033[0m')
