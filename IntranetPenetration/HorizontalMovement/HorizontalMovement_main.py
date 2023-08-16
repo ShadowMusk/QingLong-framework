@@ -90,7 +90,7 @@ class HorizontalMovement:
                 break
             elif choice == "":
                 continue
-        print('\033[1;32;32m' + "[+] Now you can try using 'dir' to connect to the target host" + '\033[0m')
+        #print('\033[1;32;32m' + "[+] Now you can try using 'dir' to connect to the target host" + '\033[0m')
 
     # 2
     def Atexec(self, choice):
