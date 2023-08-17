@@ -23,9 +23,11 @@ class EmailBombing:
         history = InMemoryHistory()
         while True:
             try:
-                choice = prompt(formatted_text1, completer=completer,history=history)
+                choice = prompt(formatted_text1, completer=completer, history=history)
                 if choice == 'back':
                     break
+                elif choice == "":
+                    continue
                 elif choice == 'show functions':
                     self.show_functions()
                     continue

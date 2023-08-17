@@ -20,6 +20,8 @@ def PhishingEmails():
             choice = prompt(formatted_text1, completer=completer, history=history)
             if choice == 'back':
                 break
+            elif choice == "":
+                continue
             elif choice == 'show functions':
                 show_functions()
                 continue
