@@ -44,6 +44,9 @@ class IntranetPenetration:
                     continue
                 except KeyboardInterrupt:
                     print("exiting......")
+                except IndexError:
+                    print('\033[1;31;31m' + "[-] wrong command!" + '\033[0m')
+                    continue
                 except OSError:
                     print('\033[1;31;31m' + "[-] The port is currently occupied.Please try using a different port.Or try again later." + '\033[0m')
                     continue
