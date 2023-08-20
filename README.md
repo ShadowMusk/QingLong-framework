@@ -71,7 +71,7 @@ python3 index.py
 
 ### （2）使用框架
 
-启动框架后，敲击tab键时，命令拦会显示可选命令，选择“let's start”即可进入框架：
+启动框架后，敲击tab键时，命令拦会显示可选命令，选择“let's start”即可进入框架。
 
 更加详细的使用步骤，请参考链接：[ShadowMusk/QingLong-Using-Tutorials: Ways to use QingLong framework (github.com)](https://github.com/ShadowMusk/QingLong-Using-Tutorials)
 
