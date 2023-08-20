@@ -1,80 +1,98 @@
-# 1.QingLong framework ![logo](readme.assets/logo.jpg)
+# 1、青龙框架
 
-Qinglong is a lightweight Penetration test framework focusing on intranet penetration. Its functions are very powerful and the operation is very simple.
+![logo](readme.assets/logo.jpg)
 
-This project will be kept updated for a long time.
+青龙是一款专注于内网渗透的轻量级渗透测试框架，它不仅覆盖了域信息收集、权限提升、权限维持、域横向移动攻击、域控制器安全、Mimikatz、隧道代理等内网渗透中不可或缺的功能，还集成了多款经典的渗透测试工具，并且还对它们做了必要的汉化处理，使得渗透测试人员可以更加便捷和高效地进行测试，减少重复劳动。
 
-# 2.Operating environment
+该项目将会保持长期更新。
 
-## 2.1 System environment
+# 2、运行环境
 
-**All distributions using apt-get, such as**:
+## 2.1 系统环境
 
-- Ubuntu and its derivatives such as Linux Mint,Elementary OS,etc
+**所有使用apt-get的Linux发行版，如**:
+
+- Ubuntu和其衍生版如Linux Mint、Elementary OS等
 - Debian
 - Kali Linux
 
-**All distributions using yum, such as**:
+**所有使用yum的Linux发行版，如**:
 
 - Red Hat Enterprise Linux(RHEL)
 - Fedora
 - CentOS
 - Scientific Linux
 
-## 2.2 Python version
+## 2.2 python版本
 
-The Python version should not be lower than **3.6** (this project is developed based on Python 3.6, and perhaps other Python versions lower than 3.6 can also run this project)
+python版本不低于3.6（本项目是基于python 3.6开发的，也许其他低于3.6版本的python也可以运行该项目）
 
-# 3.Functional module          
+# 3、功能模块          
 
-Qinglong currently has six major functional modules, namely **information collection module**, **vulnerability scanning module**, **password cracking module**, **malicious attack module**, **denial of service attack module**, and **internal network penetration module**.
+青龙目前有6大功能模块，分别为**信息收集模块**、**漏洞扫描模块**、**密码破解模块**、**恶意攻击模块**、**拒绝服务攻击模块**、**内网渗透模块**。
 
-**Information collection module**: (1) query whois information, Subdomain, segment C, IP information, website filing (2) judge whether there is a CDN (3) WAF identification (4) directory scanning (5) nmap scanning
+**信息收集模块**：（1）查询whois信息、子域名、C段、IP信息、网站备案（2）判断是否存在CDN（3）WAF识别（4）目录扫描（5）nmap扫描。
 
-**Vulnerability scanning module**: integrating three major vulnerability scanning tools: sqlmap, nikto, and wapiti.
+**漏洞扫描模块**：集成sqlmap、nikto和wapiti三大漏洞扫描神器。
 
-**Password cracking module**: integrating four major password cracking tools: Hydra, Medusa, Hashcat, and John.
+**密码破解模块**：集成hydra、medusa、hashcat和john四大密码破解神器。
 
-**Malicious attack module**: email phishing and email bombing.
+**恶意攻击模块**：邮件钓鱼和邮件轰炸。
 
-**Denial of service attack module**: hping3, slowloris, goldeneye, hammer, DDos Attack.
+**拒绝服务攻击模块**：hping3、slowloris、goldeneye、hammer、DDos-Attack。
 
-**Intranet penetration module**: backdoor generation, backdoor monitoring, multi backdoor connection, domain information collection, privilege promotion, privilege maintenance, domain horizontal movement attack, domain controller security, Mimikatz, Tunnel broker.
+**内网渗透模块**：后门生成、后门监听、多后门连接、域信息收集、权限提升、权限维持、域横向移动攻击、域控制器安全、Mimikatz、隧道代理等等。
 
-# 4.Tutorial
+更多功能会陆陆续续更新！
 
-### （1）Launch framework
+# 4、教程
 
-Firstly, go to the directory of the framework:
+### （1）启动框架
+
+首先，下载源代码，解压。
+
+接着，来到框架的目录下：
 
 ```shell
-cd QingLong-framework-main
+cd QingLong-framework
 ```
 
-Next, run the following command to install the required dependencies for the framework:                         
+然后，运行以下命令来安装框架所需依赖：                         
 
 ```shell
 python3 dependencies.py
 ```
 
-Then, run the following command to start the framework:
+最后，运行如下命令来启动框架：
 
 ```shell
 python3 index.py
 ```
 
-### （2）How to use it
+### （2）使用框架
 
-When tapping the tab key, the command bar will display optional commands. Select "let's start" to enter the framework.
+启动框架后，敲击tab键时，命令拦会显示可选命令，选择“let's start”即可进入框架：
 
-For more detailed usage steps, please refer to the link:[ShadowMusk/QingLong-Using-Tutorials: Ways to use QingLong framework (github.com)](https://github.com/ShadowMusk/QingLong-Using-Tutorials)
+更加详细的使用步骤，请参考链接：[ShadowMusk/QingLong-Using-Tutorials: Ways to use QingLong framework (github.com)](https://github.com/ShadowMusk/QingLong-Using-Tutorials)
 
-# 5.View update records
+# 5、查看更新记录
 
-Please check the 'Update Records. md' file for updated information.
+请查看“Update Records.md”文件来获取框架的更新信息。
 
-（请查看“Update Records.md”文件来获取更新信息。）
+# 6、免责声明
 
-# 6.Disclaimers
+1. 使用风险：本渗透测试工具仅用于授权的渗透测试和安全评估活动。未经授权访问或使用他人系统和数据可能违反法律，对他人的财产和隐私构成威胁。请确保您已获得合法授权，并遵守适用法律和政策。
 
-This Penetration test tool is only used for authorized Penetration test and safety assessment activities!
+2. 免责条款：使用本渗透测试工具产生的任何损失、责任或损害，包括但不限于数据丢失、系统崩溃、业务中断等，作者概不负责。使用者对其使用本工具所造成的一切后果负完全责任。
+
+3. 安全意识：渗透测试工具可能会对目标系统造成意外的影响。在使用本工具之前，请务必备份所有重要数据，并确认您已了解工具的功能和用途。使用者应保持高度的安全意识，谨慎操作。
+
+4. 法律合规：本工具的使用者需自行确保遵守所有适用的法律和条例。使用本工具进行任何非法活动均严格禁止，一切后果由使用者承担。
+
+5. 开源共享：本项目遵循开源共享的精神，仅供技术研究和教育目的使用。禁止将本项目用于任何商业目的或非法活动。
+
+6. 更新和支持：本工具可能随时进行更新或修改，作者不保证工具的持续稳定性或支持。
+
+通过使用本渗透测试工具，您表明您已阅读、理解并同意上述免责声明。如果您不同意或不接受这些条款，请勿使用本工具。
+
+作者保留在未来对免责声明进行修改的权利。用户应定期查阅以获取最新版本。
