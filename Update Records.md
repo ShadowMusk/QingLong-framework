@@ -44,11 +44,11 @@ Command line support for querying input history function.
 
 2、集成powersploit框架的PowerUp.ps1的部分功能，后续还会继续集成PowerUp.ps1的其他功能，如下是其集成的功能：
 
-（1）检查当前%PATH%是否存在当前用户可以写入的目录
+（1）检查%PATH%是否存在当前用户可以写入的目录
 
 （2）从系统上的applicationHost.config文件恢复加密过的应用池和虚拟目录的密码
 
-（3）检查AlwaysInstallElevated注册表项是否被设置，如果被设置，意味着的MSI文件是以system权限运行的
+（3）检查AlwaysInstallElevated注册表项是否被设置，如果被设置，意味着MSI文件是以system权限运行的
 
 （4）检测Winlogin注册表AutoAdminLogon项有没有被设置，可查询默认的用户名和密码
 
