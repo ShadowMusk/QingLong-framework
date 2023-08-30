@@ -18,7 +18,13 @@ Allow attackers to steal passwords from Google Chrome.
 
 （允许攻击者们盗取谷歌浏览器的密码。）
 
+**首先需要注意：受害者主机上面的杀毒软件、防火墙等都要关闭！！！！！！**
+
 该功能在内网渗透模块的小工具模块下。
+
+使用方法：进入后门后，选择序号7进入小工具模块，接着选择”盗取谷歌浏览器的密码”的功能序号，执行“upload getChromePassword.exe”命令，把getChromePassword.exe上传到受害者主机，然后执行“run”命令即可。
+
+步骤可参考：https://www.freebuf.com/sectool/374684.html
 
 ## 3.QingLong Framework v1.3 updated on August 10, 2023
 
@@ -28,7 +34,13 @@ Allow attackers to obtain the victims' WiFi passwords.
 
 （允许攻击者获取受害者的wifi密码。）
 
+**首先需要注意：受害者主机上面的杀毒软件、防火墙等都要关闭！！！！！！**
+
 该功能在内网渗透模块的小工具模块下。
+
+使用方法：进入后门后，选择序号7进入小工具模块，接着选择“盗取wifi密码”的功能序号即可。
+
+步骤可参考：https://www.freebuf.com/sectool/374684.html
 
 ## 4.QingLong Framework v1.4 updated on August 14, 2023
 
@@ -60,4 +72,4 @@ Command line support for querying input history function.
 
 （8）返回当前服务器上的web.config文件中的数据库连接字符串的明文
 
-3、使用方法：连接后门，进入权限提升模块，选择序号1进入PowerUp.ps1模块，然后上传PowrUp.ps1（敲击tab键，选择“upload PowrUp.ps1”命令即可），然后就可以使用上述功能了。
+3、使用方法：**首先需要注意：受害者主机上面的杀毒软件、防火墙等都要关闭！！！！！！**连接后门，进入权限提升模块，选择序号1进入PowerUp.ps1模块，然后上传PowrUp.ps1（敲击tab键，选择“upload PowrUp.ps1”命令即可），然后就可以使用上述功能了。
