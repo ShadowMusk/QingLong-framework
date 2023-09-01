@@ -73,7 +73,7 @@ class PowerUp:
         headers = ['\033[1;34;34m' + "id" + '\033[0m', '\033[1;34;34m' + "model" + '\033[0m', '\033[1;34;34m' + "usage" + '\033[0m', '\033[1;34;34m' + "description" + '\033[0m']
         mydata = [["1", "Find-PathDLLHijack", "1", "检查当前%PATH%是否存在当前用户可以写入的目录"],
                   ["2", "Get-ApplicationHost", "2", "从系统上的applicationHost.config文件恢复加密过的应用池和虚拟目录的密码"],
-                  ["3", "Get-RegistryAlwaysInstallElevated", "3", "检查AlwaysInstallElevated注册表项是否被设置，如果被设置，意味着的MSI文件是以system权限运行的"],
+                  ["3", "Get-RegistryAlwaysInstallElevated", "3", "检查AlwaysInstallElevated注册表项是否被设置，如果被设置，意味着MSI文件是以system权限运行的"],
                   ["4", "Get-RegistryAutoLogon", "4", "检测Winlogin注册表AutoAdminLogon项有没有被设置，可查询默认的用户名和密码"],
                   ["5", "Get-UnattendedInstallFile", "5", "查找可能包含有部署凭据的文件"],
                   ["6", "Get-ModifiableRegistryAutoRun", "6", "检查开机自启的应用程序路径和注册表键值，返回当前用户可修改的程序路径"],
