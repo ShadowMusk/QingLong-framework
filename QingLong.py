@@ -32,7 +32,9 @@ class QingLong:
                 self.show_functions()
                 print('\033[1;34;34m' + "[*] Select the serial number to enter the function module." + '\033[0m')
             elif choice == '1':
+                os.chdir("GetInformation/")
                 get_information = GetInformation_main.GetInformation()
+                os.chdir("../")
             elif choice == '2':
                 vulnerability_analysis_scanning = VulnerabilityScanning_main.VulnerabilityAnalysisScanning()
             elif choice == '3':
