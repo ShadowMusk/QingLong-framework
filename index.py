@@ -8,15 +8,15 @@ import QingLong
 
 if __name__ == '__main__':
     thread_session = []  # 存储会话列表.
-    commands = ["let's start", "quit"]
+    commands = ["Let's start", "Quit"]
     completer = WordCompleter(commands)
-    formatted_text = ANSI('\033[1;32;32m(QingLong Framework) > \033[0m')
+    formatted_text = ANSI('\033[1;32;32m(Are You Ready?) > \033[0m')
     history = InMemoryHistory()
     logo.logo()
     while True:
         choice = prompt(formatted_text, completer=completer, history=history)
-        if choice == "let's start":
+        if choice == "Let's start":
             qinglong = QingLong.QingLong(thread_session)
             break
-        elif choice == 'quit':
+        elif choice == 'Quit':
             sys.exit()
