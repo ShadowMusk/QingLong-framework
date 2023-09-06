@@ -46,5 +46,6 @@ class GetInformation:
         print("\n" + '\033[1;34;34m' + "Information Gathering" + '\033[0m' + "\n" + '=' * len("Information Gathering") + "\n")
         headers = ['\033[1;34;34m' + "id" + '\033[0m', '\033[1;34;34m' + "model" + '\033[0m', '\033[1;34;34m' + "usage" + '\033[0m', '\033[1;34;34m' + "description" + '\033[0m']
         mydata = [["1", "Domain name information collection", "1", "信息收集"],
-                  ["2", "WAF Identification", "2", "WAF识别"], ["3", "Directory Scan", "3", "目录扫描"], ["4", "Nmap", "4", "Nmap扫描"], ["5", "JSFinder", "5", "在网站的js文件中提取URL和子域名"]]
+                  ["2", "WAF Identification", "2", "WAF识别"], ["3", "Directory Scan", "3", "目录扫描"], ["4", "Nmap", "4", "Nmap扫描"], ["5", "Extracting URLs And Subdomains From JavaScript Files
+", "5", "从js文件中提取URL和子域名"]]
         MyTable.createTable(headers, mydata)
