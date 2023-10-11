@@ -125,7 +125,7 @@ python3 index.py
 
 3、使用方法：首先需要注意，受害者主机上面的杀毒软件、防火墙等都要关闭。连接后门，进入权限提升模块，选择序号1进入PowerUp.ps1模块，然后上传PowrUp.ps1（敲击tab键，选择“upload PowrUp.ps1”命令即可），然后就可以使用上述功能了。
 
-### 6、QingLong Framework v1.14（更新于2023.9.5）
+### 6、QingLong Framework v1.15（更新于2023.9.5）
 
 集成工具JSFinder，可帮助我们在网站的js文件中快速提取URL和子域名。该功能在信息收集模块中。
 
