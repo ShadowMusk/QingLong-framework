@@ -16,7 +16,7 @@ def logo():
 
     ''' + '\033[0m'
     print(lg)
-    print('\033[1;34;34m' + "[version]" + '\033[0m' + " QingLong Framework version 1.15")
+    print('\033[1;34;34m' + "[version]" + '\033[0m' + " QingLong Framework version 1.15.2")
     print('\033[1;34;34m' + "[github]" + '\033[0m' + " https://github.com/ShadowMusk/QingLong-framework")
     print('\033[1;34;34m' + "[author]" + '\033[0m' + " ShadowMusk")
     print('\033[1;31;31m' + "[warning]" + '\033[0m' + " Please Do Not Use This Tool For Illegal Activities!")
