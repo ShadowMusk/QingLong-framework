@@ -6,13 +6,13 @@ from bs4 import BeautifulSoup
 
 def parse_args():
     parser = argparse.ArgumentParser(epilog='\tExample: \r\n' + sys.argv[0] + " -u http://www.baidu.com")
-    parser.add_argument("-u", "--url", help="The website(目标网站)")
-    parser.add_argument("-c", "--cookie", help="The website cookie(目标网站的cookie)")
-    parser.add_argument("-f", "--file", help="The file contains url or js(包含url或者js的文件)")
-    parser.add_argument("-ou", "--outputurl", help="Output file name(输出url的文件名称)")
-    parser.add_argument("-os", "--outputsubdomain", help="Output file name(输出子域名的文件名称)")
-    parser.add_argument("-j", "--js", help="Find in js file(在js文件中爬取)", action="store_true")
-    parser.add_argument("-d", "--deep", help="Deep find(深度爬取)", action="store_true")
+    parser.add_argument("-u", "--url", help="The website")
+    parser.add_argument("-c", "--cookie", help="The website cookie")
+    parser.add_argument("-f", "--file", help="The file contains url or js")
+    parser.add_argument("-ou", "--outputurl", help="Output file name")
+    parser.add_argument("-os", "--outputsubdomain", help="Output file name")
+    parser.add_argument("-j", "--js", help="Find in js file", action="store_true")
+    parser.add_argument("-d", "--deep", help="Deep find", action="store_true")
     return parser.parse_args()
 
 
