@@ -25,7 +25,7 @@
 
 ## 2.2 python版本
 
-python版本不低于3.6（本项目是基于python 3.6开发的，也许其他低于3.6版本的python也可以运行该项目）
+python版本不低于3.0（本项目是基于python 3.6开发的，也许其他低于3.6版本的python也可以运行该项目）
 
 # 3、功能模块          
 
@@ -117,9 +117,11 @@ python3 index.py
 
 集成工具JSFinder，可帮助我们在网站的js文件中快速提取URL和子域名。该功能在信息收集模块中。
 
-### 7、QingLong Framework v1.15.2（更新于2023.11.6）
+### 7、QingLong Framework v1.15.2（更新于2023.11.29）
 
-优化了dirb和JSFinder的how to use界面。
+1、优化了dirb和JSFinder的how to use界面。
+
+2、删除根据电话卡、身份证和银行卡来查询用户信息的功能。
 
 # 6、免责声明
 
