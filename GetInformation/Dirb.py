@@ -19,7 +19,7 @@ def mydirb():
         elif choice == "":
             continue
         elif choice == 'how to use dirb':
-            dirb_help.help()
+            dirb_help.dirb_help()
             continue
         os.system(choice)
         continue
