@@ -12,9 +12,6 @@ sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 from AuxiliaryFunctions import MyTable
 import queryIP
 import ICP
-import queryBank
-import queryIDcard
-import queryPhoneNum
 
 
 # 域名信息模块
@@ -59,15 +56,6 @@ class DomainInformation:
                 elif choice.split()[0] == '6':
                     queryIP.queryIP(choice.split()[1])
                     continue
-                elif choice.split()[0] == '7':
-                    queryPhoneNum.queryPhoneNum(choice.split()[1])
-                    continue
-                elif choice.split()[0] == '8':
-                    queryIDcard.queryIDcard(choice.split()[1])
-                    continue
-                elif choice.split()[0] == '9':
-                    queryBank.queryBank(choice.split()[1])
-                    continue
                 elif choice == 'show functions':
                     self.show_functions()
                     continue
@@ -85,14 +73,13 @@ class DomainInformation:
         headers = ['\033[1;34;34m' + "id" + '\033[0m', '\033[1;34;34m' + "model" + '\033[0m', '\033[1;34;34m' + "usage" + '\033[0m', '\033[1;34;34m' + "description" + '\033[0m']
         mydata = [["1", "Obtain whois information", "1 domain", "查询whois信息"], ["2", "Query Subdomain", "2 domain", "查询子域名"],
                   ["3", "Query Segment C", "3 IPs", "查询C段"], ["4", "Determine if there is a CDN", "4 domain", "判断是否存在CDN"], ["5", "ICP", "5 domain", "查询网站备案/许可证号"],
-                  ["6", "Query IP", "6 ip", "查询IP信息"], ["7", "Query information based on phone card", "7 phoneNumber", "根据电话卡查询信息"],
-                  ["8", "Query information based on IDcard", "8 IDcard", "根据身份证查询信息"], ["9", "Query information based on bank card", "9 bankCard", "根据银行卡查询信息"]]
+                  ["6", "Query IP", "6 ip", "查询IP信息"]]
         MyTable.createTable(headers, mydata)
 
     def show_params(self):
         print("\n" + '\033[1;34;34m' + "Parameter Description" + '\033[0m' + "\n" + '=' * len("Parameter Description") + "\n")
         headers = ['\033[1;34;34m' "Params" + '\033[0m', '\033[1;34;34m' "Description" + '\033[0m']
-        mydata = [["domain", "域名"], ["IPs", "IP段,格式为192.168.88.0/24"], ["ip", "IP地址"], ["phoneNumber", "电话号码"], ["IDcard", "身份证号码"], ["bankCard", "银行卡号"]]
+        mydata = [["domain", "域名"], ["IPs", "IP段,格式为192.168.88.0/24"], ["ip", "IP地址"]]
         MyTable.createTable(headers, mydata)
 
     def getWhois(self, domain):  # 查询whois信息
