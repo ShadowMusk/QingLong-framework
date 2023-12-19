@@ -125,7 +125,7 @@ python3 index.py
 
 ### 8、QingLong Framework v2.0（更新于2023.12.19）
 
-1、添加了Linux渗透模块，目前该模块功能为Linux后门生成和Linux信息收集。
+添加了Linux渗透模块。目前该模块的功能为Linux后门生成和Linux系统信息收集。
 
 # 6、免责声明
 
