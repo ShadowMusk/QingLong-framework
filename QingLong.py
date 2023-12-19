@@ -12,6 +12,7 @@ from IntranetPenetration import IntranetPenetration_main
 from DDoS import DDoS_main
 from MaliciousAttacks import MaliciousAttacks_main
 from PasswordAttack import PasswordAttack_main
+from DestroyLinux import DestroyLinux_main
 from AuxiliaryFunctions import MyTable
 import logo2
 
@@ -48,6 +49,8 @@ class QingLong:
                 os.chdir("../")
             elif choice == '6':
                 intranet_penetration = IntranetPenetration_main.IntranetPenetration(self.thread_session)
+            elif choice == '7':
+                destroy_linux = DestroyLinux_main.DestroyLinux(self.thread_session)
             elif choice == 'quit':
                 print('\033[1;1;1m' + "[*] Exit Successfully.Thanks For Using the Framework." + '\033[0m')
                 sys.exit()
@@ -56,5 +59,5 @@ class QingLong:
         print("\n" + '\033[1;34;34m' + "Models of QingLong Framework" + '\033[0m' + "\n" + '=' * len("Models of QingLong Framework") + "\n")
         headers = ['\033[1;34;34m' + "id" + '\033[0m', '\033[1;34;34m' + "model", '\033[1;34;34m' + "description" + '\033[0m']
         mydata = [["1", "Information Gathering", "信息收集模块"], ["2", "Vulnerability Scanning", "漏洞扫描模块"], ["3", "Password Attacks", "密码破解模块"],
-                  ["4", "Malicious Attacks", "恶意攻击模块"], ["5", "Denial Of Service", "拒绝服务攻击模块"], ["6", "Intranet Penetration", "内网渗透模块"]]
+                  ["4", "Malicious Attacks", "恶意攻击模块"], ["5", "Denial Of Service", "拒绝服务攻击模块"], ["6", "Intranet Penetration", "内网渗透模块"], ["7", "Destroy Linux", "Linux系统渗透模块"]]
         MyTable.createTable(headers, mydata)
