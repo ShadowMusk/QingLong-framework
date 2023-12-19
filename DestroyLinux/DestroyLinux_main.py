@@ -30,9 +30,9 @@ class DestroyLinux:
             elif choice == 'show params':
                 self.show_params()
                 continue
-            elif choic.split()[0] == '1':
+            elif choice.split()[0] == '1':
                 # print("Please turn to README.md")
-                self.generate_backdoor_linux(choic.split()[1], choic.split()[2], choic.split()[3], choic.split()[4])
+                self.generate_backdoor_linux(choice.split()[1], choice.split()[2], choice.split()[3], choice.split()[4])
                 continue
             # 生成后门
             elif choice.split()[0] == '2':
