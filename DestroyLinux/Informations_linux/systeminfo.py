@@ -51,17 +51,17 @@ def systeminfo(conn):
 
 
 def receive(conn, command):
-    conn.sendall(command.encode("gbk"))
+    conn.sendall(command.encode("utf-8"))
     result_len = conn.recv(4)
     real_len = struct.unpack("i", result_len)[0]
     while True:
         if 1024 < real_len:
-            result = conn.recv(1024).decode("gbk", errors="ignore")
+            result = conn.recv(1024).decode("utf-8", errors="ignore")
             print(result)
             real_len = real_len - 1024
             continue
         else:
-            result = conn.recv(1024).decode("gbk", errors="ignore")
+            result = conn.recv(1024).decode("utf-8", errors="ignore")
             print(result)
             break
 
@@ -71,6 +71,6 @@ def show_functions():
     headers = ['\033[1;34;34m' + "id" + '\033[0m', '\033[1;34;34m' + "model", '\033[1;34;34m' + "description" + '\033[0m']
     mydata = [["1", "Print all available system information", "打印所有可用的系统信息"], ["2", "Kernel Version", "内核版本"], ["3", "System host name", "系统主机名"],
               ["4", "View system kernel architecture (64 bit/32 bit)", "查看系统内核架构（64位/32位）"], ["5", "Release Information", "发行版信息"],
-              ["6", "Kernel Information", "内核信息"], ["7", "CPU information", "CPU信息"],
+              ["6", "Kernel Information", "内核信息"], ["7", "CPU information", "CPU信息"]
               ]
     MyTable.createTable(headers, mydata)
