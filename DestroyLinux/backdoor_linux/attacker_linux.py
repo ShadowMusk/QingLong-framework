@@ -95,7 +95,7 @@ class Attacker(threading.Thread):
                             break
                     continue
             except:
-                print('\033[1;34;34m' + "[-] something wrong!" + '\033[0m')
+                print('\033[1;31;31m' + "[-] something wrong!" + '\033[0m')
                 continue
 
     # 文件下载和上传函数
