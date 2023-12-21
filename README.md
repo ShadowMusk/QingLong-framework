@@ -123,13 +123,15 @@ python3 index.py
 
 2、删除根据电话卡、身份证和银行卡来查询用户信息的功能。
 
-### 8、QingLong Framework v2.0（更新于2023.12.19）
+### 8、QingLong Framework v2.4（更新于2023.12.21）
 
-添加了Linux渗透模块。目前该模块的功能为：
+添加了Linux渗透模块。目前Linux渗透模块的子模块为：
 
 1、Linux后门生成。
 
 2、Linux系统信息收集。
+
+3、权限维持模块。
 
 # 6、免责声明
 
