@@ -61,17 +61,17 @@ def NetworkRoutingandCommunication(conn):
 
 
 def receive(conn, command):
-    conn.sendall(command.encode("gbk"))
+    conn.sendall(command.encode("utf-8"))
     result_len = conn.recv(4)
     real_len = struct.unpack("i", result_len)[0]
     while True:
         if 1024 < real_len:
-            result = conn.recv(1024).decode("gbk", errors="ignore")
+            result = conn.recv(1024).decode("utf-8", errors="ignore")
             print(result)
             real_len = real_len - 1024
             continue
         else:
-            result = conn.recv(1024).decode("gbk", errors="ignore")
+            result = conn.recv(1024).decode("utf-8", errors="ignore")
             print(result)
             break
 
