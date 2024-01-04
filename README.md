@@ -15,6 +15,7 @@
 - Ubuntu和其衍生版如Linux Mint、Elementary OS等
 - Debian
 - Kali Linux
+
 后续会支持使用yum的Linux发行版，敬请关注！
 
 ## 2.2 python版本
