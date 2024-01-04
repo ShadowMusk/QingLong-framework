@@ -15,17 +15,11 @@
 - Ubuntu和其衍生版如Linux Mint、Elementary OS等
 - Debian
 - Kali Linux
-
-**所有使用yum的Linux发行版，如**:
-
-- Red Hat Enterprise Linux(RHEL)
-- Fedora
-- CentOS
-- Scientific Linux
+后续会支持使用yum的Linux发行版，敬请关注！
 
 ## 2.2 python版本
 
-python版本不低于3.0（本项目是基于python 3.6开发的，也许其他低于3.6版本的python也可以运行该项目）
+python版本不低于3.0（本项目是基于python 3.6开发的）
 
 # 3、功能模块          
 
